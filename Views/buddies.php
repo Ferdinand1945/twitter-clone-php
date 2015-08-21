@@ -6,31 +6,31 @@
       <form action="/theposts" method="post">
         <textarea name="text" class="inputs postText size-input-1"></textarea>
         <div class="row">
-        <input type="submit" value="Post something!">
-          </div>
+          <input type="submit" value="Post something!">
+        </div>
       </form>
       </p>
   </div>
 </div>
 <div class="seven columns panel left">
   <div id="thediv">
-  <h1>Your Profile!</h1>
-  <div class="postTabel">
-    <img class="avatar" src="http://www.gravatar.com/avatar/<?php echo $User->gravatar_hash; ?>">
-    <span class="name"><?php echo $User->name; ?></span> @<?php echo $User->username; ?>
-    <p>
-      <?php echo $userData->theposts_count . " "; echo ($userData->theposts_count != 1) ? "Posts" : "Post"; ?>
-      <span class="spacing"><?php echo $userData->followers . " "; echo ($userData->followers != 1) ? "Followers" : "Follower"; ?></span>
-      <span class="spacing"><?php echo $userData->following . " Following"; ?></span><br>
-    </p>
-    <div class="boxing">
-              <h4>Your last post was: </h4>
-          <div class="six columns border-ram">
-      <?php echo $userData->theposts; ?>
+    <h1>Your Profile!</h1>
+    <div class="postTabel">
+      <img class="avatar" src="http://www.gravatar.com/avatar/<?php echo $User->gravatar_hash; ?>">
+      <span class="name"><?php echo $User->name; ?></span> @<?php echo $User->username; ?>
+      <p>
+        <?php echo $userData->theposts_count . " "; echo ($userData->theposts_count != 1) ? "Posts" : "Post"; ?>
+        <span class="spacing"><?php echo $userData->followers . " "; echo ($userData->followers != 1) ? "Followers" : "Follower"; ?></span>
+        <span class="spacing"><?php echo $userData->following . " Following"; ?></span><br>
+      </p>
+      <div class="boxing">
+        <h4>Your last post was: </h4>
+        <div class="six columns border-ram">
+          <?php echo $userData->theposts; ?>
         </div>
-</div>
-  </div>
-    
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -39,11 +39,11 @@
   <h1>What we all are saying.</h1>
   <?php foreach($tposts as $theposts){ ?>
   <div class="postTabel">
-    <img class="avatar" src="http://www.gravatar.com/avatar/<?php echo $ribbit->gravatar_hash; ?>">
+    <img class="avatar" src="http://www.gravatar.com/avatar/<?php echo $theposts->gravatar_hash; ?>">
     <span class="name"><?php echo $theposts->name; ?></span> @<?php echo $theposts->username; ?> 
     <span class="time">
       <?php 
-                                      $timeSince = time() - strtotime($ribbit->created_at); 
+                                      $timeSince = time() - strtotime($theposts->created_at); 
                                       if($timeSince < 60)
                                       {
                                         echo $timeSince . "s";

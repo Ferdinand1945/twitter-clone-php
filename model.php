@@ -156,7 +156,7 @@ class Model{
         $this->insert("Comments", $r);
     }
     
-    public function getPublicRibbits($q){
+    public function getPublicComments($q){
         if($q === false)
         {
             $query = "SELECT name, username, gravatar_hash, theposts, Comments.created_at FROM Comments JOIN Users ";
@@ -167,12 +167,12 @@ class Model{
             $query .= "ON user_id = Users.id WHERE theposts LIKE \"%" . $q ."%\" ORDER BY Comments.created_at DESC LIMIT 10;";   
         }
         $res = $this->db->query($query);
-        $ribbits = array();
+        $comments = array();
         while($row = $res->fetch_object())
         {
-            array_push($ribbits, $row);
+            array_push($comments, $row);
         }
-        return $ribbits;
+        return $comments;
     }
     
     public function getPublicProfiles($user, $q){

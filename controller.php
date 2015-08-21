@@ -214,8 +214,8 @@ class Controller{
             {
                 $q = $_POST['query'];
             }
-            $ribbits = $this->model->getPublicRibbits($q);
-            $this->loadPage($user, "public", array('ribbits' => $ribbits));
+            $comments = $this->model->getPublicComments($q);
+            $this->loadPage($user, "public", array('comments' => $comments));
         }
     }
     
