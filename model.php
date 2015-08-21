@@ -228,4 +228,7 @@ class Model{
   
   
   }
+  public function uploadPic ($user, $pictures ){
+  
+  }
 }

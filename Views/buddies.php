@@ -9,6 +9,11 @@
           <input type="submit" value="Post something!">
         </div>
       </form>
+      <form action="/uploadPic" method="post" enctype="multipart/form-data">
+    Select image to upload:
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Upload Image" name="submit">
+</form>
       </p>
   </div>
 </div>
