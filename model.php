@@ -1,14 +1,14 @@
 <?php
-
+//alla objekten skapat i classen Model.  
 class Model{
     
-    private $db; // Holds mysqli Variable
+    private $db; // Behåller msqli variabel $db
     
     function __construct(){
         $this->db = new mysqli('mysql1099.servage.net', 'dariostruz31', 'fernando1985', 'dariostruz31');
     }
     
-    //--- private function for performing standard SELECTs
+    // Vi skapar funktionen select som kommer att förlätta anropet av data i databasen på de olika funktionen.
     private function select($table, $arr){
         $query = "SELECT * FROM " . $table;
         $pref = " WHERE ";
@@ -21,7 +21,7 @@ class Model{
         return $this->db->query($query);
     }
     
-    //--- private function for performing standard INSERTs
+    // Som SELECT skapar vi en INSERT funktion som kommer att förlätta insertion av data i de olik funktionen.
     private function insert($table, $arr)
     {
         $query = "INSERT INTO " . $table . " (";
@@ -42,7 +42,7 @@ class Model{
         return $this->db->query($query);
     }
     
-    //--- private function for performing standard DELETEs
+    // DELETE för förlätta redigering av db i en funktion
     private function delete($table, $arr){
         $query = "DELETE FROM " . $table;
         $pref = " WHERE ";
@@ -54,7 +54,7 @@ class Model{
         $query .= ";";
         return $this->db->query($query);
     }
-    //--- private function for checking if a row exists
+    // Skapar en funktion som ska kontrollera om en row existerar, här ser vi användning av funktion select för första gången.
     private function exists($table, $arr){
         $res = $this->select($table, $arr);
         return ($res->num_rows > 0) ? true : false;
@@ -74,6 +74,8 @@ class Model{
         }
     }
     
+  
+  // funktion signupUser, för att registrera en ny User
     public function signupUser($user){
         $emailCheck = $this->exists("Users", array("email" => $user['email']));
         if($emailCheck){
@@ -94,6 +96,8 @@ class Model{
         }
     }
     
+  
+  //authorizeUser fungerar som validering och filter av den data som kommer att sättas i tabelen   
     public function authorizeUser($user){
         $chars = "qazwsxedcrfvtgbyhnujmik,ol.p;/1234567890QAZWSXEDCRFVTGBYHNUJMIKOLP";
         $hash = sha1($user['username']);
@@ -105,6 +109,8 @@ class Model{
         setcookie("Auth", $hash);
     }
     
+  
+  //login funktion
     public function attemptLogin($userInfo){
         if($this->exists("Users", $userInfo))
         {
@@ -115,12 +121,14 @@ class Model{
             return false;
         }
     }
-    
+    //logout funktion
     public function logoutUser($hash){
         $this->delete("UserAuth", array("hash" => $hash));
         setcookie ("Auth", "", time() - 3600);
     }
     
+  
+  //GetUserInfo här var jag tvungen att skapa en query för att få UserInfo annars fick jag en error genom $this->select($table, $arr)
     public function getUserInfo($user)
     {
         $query = "SELECT theposts_count, IF(theposts IS NULL, 'You have no Comments', theposts) as theposts, followers, following ";
@@ -132,6 +140,9 @@ class Model{
         return $res->fetch_object();
     }
     
+  
+  
+  //Den här funktion fick jag olika errors men till slut hittade jag ett par bra exemplar och gick att skapa bra.
     public function getFollowers($user)
     {
         $query = "SELECT name, username, gravatar_hash, theposts, Comments.created_at FROM Comments JOIN (";
@@ -147,6 +158,9 @@ class Model{
         return $tposts;
     }  
     
+  
+  
+  //Post a comment funktion sätter in arrayen theposts i tabelen Comments(texten att skriva) created_at och user_id för att senare dysplaya den i postrutan.
     public function postComments($user, $text){
         $r = array(
             "theposts" => $text,
@@ -156,6 +170,8 @@ class Model{
         $this->insert("Comments", $r);
     }
     
+  
+  // Kopplad till Comments tabel, får kommentarerna, datum när posten var skapat och user_id som senare visas i en $row
     public function getPublicComments($q){
         if($q === false)
         {
@@ -175,6 +191,8 @@ class Model{
         return $comments;
     }
     
+  
+  //Anropar alla profiler som finns i db på tabelen User. Funktionen anropar alla information från tabelen Users (förutom pass) och skriver ut den i en $row  
     public function getPublicProfiles($user, $q){
         if($q === false)
         {
@@ -216,19 +234,32 @@ class Model{
         }
     }
     
+  //funktion follow, för att "follow" en user
     public function follow($user, $fId){
         $this->insert("Follows", array("user_id" => $user->id, "followee_id" => $fId));
     }
     
+  
+  //unfollow, för att "unfollow" en user.
     public function unfollow($user, $fId){
         $this->delete("Follows", array("user_id" => $user->id, "followee_id" => $fId));
     }
   
   public function answer($user, $fId) {
+  //Här kommer att vara funktionen för att svara på "theposts" comments. helt enkel svara på kommentarerna.  (still under contruction)
+    }
+    
+  //funktionen uploadPic försöker lägga upp bilder i tabelen upload eller pictures (har inte besämt hur ska det heta ännu.
+
+  //public function uploadPic($user, $pictures) {
+    //$this->insert("tbl_uploads", array("id" => $user->id, "file" => $pictures));
+       
+  //}
   
   
+  public function uploadPic($user, $pictures) {
+ 
   }
-  public function uploadPic ($user, $pictures ){
   
-  }
+  
 }

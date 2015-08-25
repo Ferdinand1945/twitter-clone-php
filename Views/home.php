@@ -1,4 +1,15 @@
-			<div class="container">
+</div>
+<div class="container-paralax">  
+<div id="intro" data-speed="4" data-type="background">
+        <div class="intro-unit">
+            <h2 class="introduccion">WELCOME TO TWITTER-CLONE BY FERNANDO</h2>
+          <p></p>
+        </div>
+    </div>
+
+    <div id="bloque1" data-speed="2" data-type="background">
+        <div class="intro-unit">
+           <div class="container">
               <div class="ten columns">
               <div class="login-box">
 				<h1>Registrera dig!</h1>
@@ -15,4 +26,8 @@
 				</p>
               </div>
 			</div>
+</div>
+        </div>
+    </div>
+
 </div>

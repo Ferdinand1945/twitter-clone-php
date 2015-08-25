@@ -4,6 +4,8 @@
 }
 body {
   background: #ffffff url('/images/bg.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   margin: 0;
   padding: 0;
 }
@@ -11,9 +13,10 @@ input {
   width: 236px;
   height: 26px;
   border: 1px solid #d2d2d2;
-  padding: 0 10px;
+  padding: 4px 10px;
   outline: none;
   font-size: 15px;
+  border-radius: 4px;
 }
 input:focus {
   background: #FFFDF2;
@@ -22,7 +25,7 @@ input:focus {
 input[type="submit"] {
   height: 37px;
   width: auto;
-  border: 1px solid #7BC574;
+  border: 1px solid #000;
   border-radius: 2px;
   color: white;
   font-size: 12px;
@@ -54,10 +57,10 @@ a:hover {
 }
 header {
   background: url('/images/bg-header.png');
-  height: 85px;
-  width: 100%;
-  position: fixed;
-margin-top: -120px;
+height: 85px;
+width: 100%;
+position: fixed;
+margin-top: 36px;
 z-index: 99;
 }
 header div.wrapper {
@@ -140,6 +143,7 @@ nav{
 #content div.wrapper div.panel.left div.postTabel img.avatar {
   margin: 0 19px 0 20px;
   float: left;
+  width: 80px;
 }
 /*Edited Margin width 90 -> 119 */
 #content div.wrapper div.panel.left div.postTabel p {
@@ -173,6 +177,92 @@ nav{
   padding: 0 24px;
   margin: 18px 0;
 }
+
+
+#content-1 div.wrapper {
+  margin: 38px auto;
+}
+#content-1 div.wrapper img {
+  border-radius: 6px;
+  float: left;
+}
+#content-1 div.wrapper div.panel {
+  border: 1px solid #d2d2d2;
+  background: white;
+  margin: 0;
+  margin-bottom: 7px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+#content-1 div.wrapper div.panel.right {
+  float: right;
+}
+#content-1 div.wrapper div.panel.right textarea.postText {
+  width: 249px;
+  height: 160px;
+  border: 1px solid #d2d2d2;
+}
+#content-1 div.wrapper div.panel.left {
+  margin-left: 10px;
+  float: left;
+}
+#content-1 div.wrapper div.panel.left div.postTabel {
+  padding: 15px 0;
+  border-bottom: 1px solid #d2d2d2;
+  min-height:80px;
+}
+#content-1 div.wrapper div.panel.left div.postTabel:last-child {
+  border: none;
+}
+#content-1 div.wrapper div.panel.left div.postTabel span.name {
+  font-size: 18px;
+  color: #58B84E;
+}
+#content-1 div.wrapper div.panel.left div.postTabel span.time {
+  font-size: 12px;
+  color: #CCC;
+}
+#content-1 div.wrapper div.panel.left div.postTabel img.avatar {
+  margin: 0 19px 0 20px;
+  float: left;
+  width: 80px;
+}
+/*Edited Margin width 90 -> 119 */
+#content-1 div.wrapper div.panel.left div.postTabel p {
+  margin: 5px 0px 0 119px; 
+  padding: 0;
+  text-align: justify;
+  line-height: 1.5;
+  color: #3f3e3d;
+}
+#content-1 div.wrapper div.panel.left div.postTabel p span.spacing {
+  padding-left: 9px;
+  margin-left: 9px;
+  height: 10px;
+  border-left: 1px solid #d2d2d2;
+}
+#content-1 div.wrapper div.panel * {
+  margin: 0px 0px 10px 0px;
+}
+#content-1 div.wrapper div.panel form {
+  padding: 0 23px;
+}
+#content-1 div.wrapper div.panel h1 {
+  border-bottom: 1px solid #d2d2d2;
+  margin: 5px 0;
+  font-weight: normal;
+  font-size: 18px;
+  padding: 13px 23px;
+  height: 23px;
+}
+#content-1 div.wrapper div.panel p {
+  padding: 0 24px;
+  margin: 18px 0;
+}
+
+
+
+
 footer {
 background-color: #333;
   font-size: 14px;
@@ -208,6 +298,34 @@ footer div.wrapper img {
     color: #8ba015;
     border: 1px solid #8ba015;
 }
+
+
+
+
+
+#content-1 .flash {
+    padding: 10px;
+    margin: 20px 0;
+}
+#content-1 .flash.error{
+    background: #ffefef;
+    color: #4c1717;
+    border: 1px solid #4c1717;
+}
+#content-1 .flash.warning{
+    background: #ffe4c1;
+    color: #79420d;
+    border: 1px solid #79420d;
+}
+#content-1 .flash.notice{
+    background: #efffd7;
+    color: #8ba015;
+    border: 1px solid #8ba015;
+}
+#pull-down {
+padding-top: 120px;
+}
+
 nav a{
     margin-right:18px;
 }
@@ -253,6 +371,8 @@ border: 1px solid #b1b2b3;
 padding: 20px;
 border-radius: 4px;
   background-color: #EFEFEF;
+  text-align: left;
+  color: #004F33;
 }
 .login-box input[type="text"] {
 margin-top: 10px;
@@ -285,4 +405,65 @@ border: 1px solid #b1b2b3;
 
 .boxing {
 padding: 21px;
+}
+
+h2.introduccion {
+    font-size: 49px;
+    text-shadow: 0px 3px 4px rgba(0,0,0,.5);
+}
+#intro {
+    background: url(../images/Gen-Z.jpg) 0 0 fixed;
+  background-repeat: no-repeat;
+  background-size: 100%;
+    min-height: 460px;
+  
+    width: 100%;
+    padding: 100px 0;
+  margin-top: -38px;
+}
+.intro-unit {
+    color: #ddd;
+    padding: 60px;
+    text-align: center;
+}
+#bloque1 {
+    background-color: #16a085;
+    margin: 0 auto;
+    width: 100%;
+}
+#bloque-img2 {
+    background: url(../images/img02.jpg) 50% 0 fixed ;
+     height: 300px;
+    padding: 100px 0;
+}
+#bloque2 {
+    background-color: #000000;
+    margin: 0 auto;
+    width: 100%;
+    color: #fff;
+}
+.container-paralax {
+position: relative;
+width: 100%;
+margin: 0px auto;
+padding: 0px;
+}
+
+#content-1 {
+    margin-bottom: 15px;
+  min-height: 420px;
+margin-top: -40px;
+}
+
+.pull-down-xl {
+padding-top: 80px;
+}
+.pull-down-xxl {
+padding-top: 120px;
+}
+
+.pictures {}
+.pictures img {
+width: 386px;
+  padding: 7px;
 }

@@ -13,7 +13,7 @@
 	<h1>Public Post</h1>
 	<?php foreach($comments as $theposts){ ?>
         <div class="postTabel">
-            <img class="avatar" src="http://www.gravatar.com/avatar/<?php echo $theposts->gravatar_hash; ?>">
+            <img class="avatar" src="/images/Avatar.png"> <!--   echo $theposts->avatar_hash; ?> -->
             <span class="name"><?php echo $theposts->name; ?></span> @<?php echo $theposts->username; ?> 
             <span class="time">
             <?php 

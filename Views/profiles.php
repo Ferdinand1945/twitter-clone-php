@@ -12,7 +12,8 @@
     <h1>Public Profiles</h1>
     <?php foreach($profiles as $user){ ?>
     <div class="postTabel">
-        <img class="avatar" src="http://www.gravatar.com/avatar/<?php echo $user->gravatar_hash; ?>">
+                    <img class="avatar" src="/images/Avatar.png"> <!--   ?php echo $user->avatar_hash; ?>"> -->
+
         <span class="name"><?php echo $user->name; ?></span><br> @<?php echo $user->username; ?> <br>
         <span class="time"><?php echo $user->followers; echo ($user->followers > 1) ? " followers " : " follower "; ?>
             <a href="<?php echo ($user->followed) ? "unfollow" : "follow"; ?>/<?php echo $user->id; ?>"><?php echo ($user->followed) ? "unfollow" : "follow"; ?></a></span>
@@ -22,4 +23,4 @@
     </div>
     <?php } ?>
 </div>
-</div>
+  </div>

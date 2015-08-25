@@ -14,7 +14,8 @@ class Router{
             "public" => "publicPage",
             "profiles" => "profiles",
             "unfollow" => "unfollow",
-            "follow" => "follow"
+            "follow" => "follow",
+            "uploadPic" => "uploadPic"
 		);
 	}
 	

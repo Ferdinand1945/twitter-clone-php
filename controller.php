@@ -1,6 +1,7 @@
 <?php
 require("model.php");
 require("router.php");
+//en enkel class flash för att displaya errors och välkomen medelnadem
 class Flash{
     
     public $msg;
@@ -16,6 +17,7 @@ class Flash{
         echo "<div class=\"flash " . $this->type . "\">" . $this->msg . "</div>";
     }
 }
+//Class controller innehåller funktionerna för att få korrekta och förkortade URI, samt funktion som laddar upp de olika sidor och själva "sidor"
 class Controller{
 	
 //--------Variables------------
@@ -25,7 +27,7 @@ class Controller{
 	
 	//Constructor
 	function __construct(){
-		//initialize private variables
+		//startar private variabler model och router
 		$this->model = new Model();
 		$this->router = new Router();
 		
@@ -40,24 +42,30 @@ class Controller{
         
         $page = $_GET['page'];
         
-		//Handle Page Load
+		//Handle Page Load// den här del tar hand av loading av varje sida 
 		$endpoint = $this->router->lookup($page);
 		if($endpoint === false)
 		{
-			header("HTTP/1.0 404 Not Found");
+			header("HTTP/1.0 404 Not Found");//error 404 för page not found
 		}
 		else
 		{
             $this->$endpoint($queryParams);
             
 		}
+      
+       $this->upload_path = ($params['upload_path'] != "" ? $params['upload_path'] : 'uploads/');
+        $this->max_file_size = ($params['max_file_size'] != "" ? $params['max_file_size'] : 1000000);
+        $this->allowed = ($params['allowed'] != "" ? $params['allowed'] : array('images/jpg','images/gif','images/jpeg','images/png'));
+        $this->site_url = 'http://www.' . $_SERVER["SERVER_NAME"] . '/';
+      
 	}
   
     private function redirect($url){
         header("Location: /" . $url);
     }
 	
-	//--- Framework Functions
+	//--- Framework funktionen
 	private function loadView($view, $data = null){
 		if(is_array($data))
 		{
@@ -74,7 +82,7 @@ class Controller{
         $this->loadView($view, $data);
         $this->loadView("footer");
     }
-	//--- Security Functions
+	//--- mmmm säkerhet är inte min starkaste sida så här finns förmodligen ett par errors 
 	private function checkAuth(){
         if(isset($_COOKIE['Auth']))
         {
@@ -85,7 +93,7 @@ class Controller{
             return false;
         }
 	}
-	
+	//Index Page är funktionen som laddar sidan home. här gör jag användning av classen flash för att displaya validering av login och registrering i home page
 	private function indexPage($params){
         $user = $this->checkAuth();
         if($user !== false){ $this->redirect("buddies"); }
@@ -109,6 +117,7 @@ class Controller{
             $this->loadPage($user, "home", array(), $flash);
         }
 	}
+  //validering av register form
 	private function signUp(){
         if($_POST['email'] == "" || strpos($_POST['email'], "@") === false){
             $this->redirect("home/5");
@@ -248,4 +257,18 @@ class Controller{
             $this->redirect("profiles");
         }
     }
+  
+  private function uploadPic($params) {
+     $user = $this->checkAuth();
+    if($user === false) { $this->redirect("home/7"); } else {
+        $uploadPic = $this->model->uploadPic($user, $r);
+        $this->loadPage($user, "uploadPic", array('uploadPic' => $uploadPic));
+    }
+  }
+  
+  private function like(){
+  
+  }
+
 }
+
