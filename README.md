@@ -1,1 +1,1 @@
-Source code for [tutorial on Nettuts+](http://net.tutsplus.com/tutorials/php/building-ribbit-in-php/)
+This is a project for MedieInstitutet by Fernando Lopez and Dagmawi Yehenew

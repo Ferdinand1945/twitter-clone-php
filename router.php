@@ -5,7 +5,7 @@ class Router{
 	
 	function __construct(){
 		$this->routes = array(
-		"home" => "indexPage",
+			"home" => "indexPage",
             "signup" => "signUp",
             "login" => "login",
             "buddies" => "buddies",
