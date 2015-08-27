@@ -2,7 +2,7 @@
 <div class="container-paralax">  
 <div id="intro" data-speed="4" data-type="background">
         <div class="intro-unit">
-            <h2 class="introduccion">WELCOME TO TWITTER-CLONE BY FERNANDO</h2>
+            <h2 class="introduccion">WELCOME TO TWITTER-CLONE BY FERNANDO and DAGMAWI</h2>
           <p></p>
         </div>
     </div>
