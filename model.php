@@ -5,7 +5,7 @@ class Model{
     private $db; // Behåller msqli variabel $db
     
     function __construct(){
-        $this->db = new mysqli('mysql1099.servage.net', 'dariostruz31', 'fernando1985', 'dariostruz31');
+        $this->db = new mysqli('youhost', 'user', 'pass', 'dbname');
     }
     
     // Vi skapar funktionen select som kommer att förlätta anropet av data i databasen på de olika funktionen.
